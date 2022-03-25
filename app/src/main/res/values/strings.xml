@@ -12,4 +12,6 @@
     <string name="points_rv_delimiter">" - "</string>
     <string name="description_default_text">Описание отсутствует</string>
     <string name="latlon_delimiter">", "</string>
+    <string name="title_name">Название:</string>
+    <string name="title_descr">Описание:</string>
 </resources>

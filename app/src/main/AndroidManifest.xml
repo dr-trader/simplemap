@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SimpleMap">
         <activity
-            android:name=".PointsActivity"
+            android:name=".ui.points.PointsActivity"
             android:label="@string/title_activity_points"
             android:exported="true" />
         <!--
@@ -33,7 +33,7 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".ui.map.MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps">
             <intent-filter>

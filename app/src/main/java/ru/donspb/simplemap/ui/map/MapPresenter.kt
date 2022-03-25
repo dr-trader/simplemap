@@ -1,6 +1,7 @@
-package ru.donspb.simplemap
+package ru.donspb.simplemap.ui.map
 
 import kotlinx.coroutines.*
+import ru.donspb.simplemap.data.data.PointData
 import ru.donspb.simplemap.data.repository.ILocalRepository
 
 class MapPresenter(

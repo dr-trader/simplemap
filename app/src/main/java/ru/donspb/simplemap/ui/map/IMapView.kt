@@ -1,4 +1,6 @@
-package ru.donspb.simplemap
+package ru.donspb.simplemap.ui.map
+
+import ru.donspb.simplemap.data.data.PointData
 
 interface IMapView {
     fun showDialog()

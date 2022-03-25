@@ -1,4 +1,4 @@
-package ru.donspb.simplemap
+package ru.donspb.simplemap.ui.map
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -21,6 +21,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import ru.donspb.simplemap.App.Companion.getDatabase
+import ru.donspb.simplemap.data.data.PointData
+import ru.donspb.simplemap.ui.points.PointsActivity
+import ru.donspb.simplemap.R
 import ru.donspb.simplemap.data.repository.LocalRepository
 import ru.donspb.simplemap.databinding.ActivityMapsBinding
 
@@ -97,10 +100,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, IMapView {
         input.setHint(R.string.dialog_edittext_hint)
         input.inputType = InputType.TYPE_CLASS_TEXT
         builder.setView(input)
-        builder.setPositiveButton(getString(R.string.dialog_ok_button),
-            { _, _ -> presenter.savePointToDB(input.text.toString()) })
-        builder.setNegativeButton(getString(R.string.dialog_cancel_button),
-            { dialogInterface, _ -> dialogInterface.cancel() })
+        builder.setPositiveButton(getString(R.string.dialog_ok_button)) { _, _ -> presenter.savePointToDB(input.text.toString()) }
+        builder.setNegativeButton(getString(R.string.dialog_cancel_button)) { dialogInterface, _ -> dialogInterface.cancel() }
         builder.show()
     }
 

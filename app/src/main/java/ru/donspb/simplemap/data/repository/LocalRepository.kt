@@ -1,10 +1,10 @@
 package ru.donspb.simplemap.data.repository
 
-import ru.donspb.simplemap.PointData
+import ru.donspb.simplemap.data.data.PointData
 import ru.donspb.simplemap.room.Entity
 import ru.donspb.simplemap.room.PointsDao
 
-class LocalRepository(val dao: PointsDao) : ILocalRepository {
+class LocalRepository(private val dao: PointsDao) : ILocalRepository {
     override suspend fun getPoints(): List<PointData> {
         return dao.getAll().map{ PointData(it.lat, it.lon, it.name, it.description) }
     }
@@ -14,6 +14,7 @@ class LocalRepository(val dao: PointsDao) : ILocalRepository {
     }
 
     override suspend fun savePoint(point: PointData) {
-        TODO("Not yet implemented")
+        val id = dao.getEntityId(point.lat, point.lon)
+        dao.update(Entity(id, point.name, point.description, point.lat, point.lon))
     }
 }
