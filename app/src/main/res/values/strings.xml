@@ -9,5 +9,7 @@
 
     <!-- Points Activity -->
     <string name="title_activity_points">Список точек</string>
-    <string name="points_rv_delimiter"> - </string>
+    <string name="points_rv_delimiter">" - "</string>
+    <string name="description_default_text">Описание отсутствует</string>
+    <string name="latlon_delimiter">", "</string>
 </resources>

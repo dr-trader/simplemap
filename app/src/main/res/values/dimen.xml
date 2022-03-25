@@ -2,4 +2,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="edittext_height">30dp</dimen>
+    <dimen name="one_dp">1dp</dimen>
 </resources>

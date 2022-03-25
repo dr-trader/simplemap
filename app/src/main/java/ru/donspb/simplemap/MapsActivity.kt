@@ -12,6 +12,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -19,10 +20,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import ru.donspb.simplemap.App.Companion.getDatabase
 import ru.donspb.simplemap.data.repository.LocalRepository
 import ru.donspb.simplemap.databinding.ActivityMapsBinding
@@ -33,14 +30,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, IMapView {
     private var locationPermissionGranted: Boolean = false
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-    val mapCoroutineScope = CoroutineScope(
-        Dispatchers.Main
-                + SupervisorJob()
-                + CoroutineExceptionHandler { _, throwable ->
-            handleError(throwable)
-        })
+
     private val presenter: MapPresenter = MapPresenter(this,
-        LocalRepository(getDatabase()), mapCoroutineScope)
+        LocalRepository(getDatabase()), lifecycleScope)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,9 +137,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, IMapView {
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
-
-    fun handleError(throwable : Throwable) {
-
     }
 }

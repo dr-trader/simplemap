@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -26,13 +26,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_delimiter" />
 
+    <TextView
+        android:id="@+id/ll_delimiter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_lat"
+        android:text="@string/latlon_delimiter" />
+
 
     <TextView
         android:id="@+id/tv_lon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_lat" />
+        app:layout_constraintStart_toEndOf="@+id/ll_delimiter" />
 
     <TextView
         android:id="@+id/tv_descr"
@@ -41,5 +49,12 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_name"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <View
+        android:id="@+id/rv_items_delimiter"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/one_dp"
+        android:background="@color/dark_grey"
+        app:layout_constraintTop_toBottomOf="@id/tv_descr"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

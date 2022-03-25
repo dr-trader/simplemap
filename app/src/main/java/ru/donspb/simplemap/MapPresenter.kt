@@ -3,16 +3,15 @@ package ru.donspb.simplemap
 import kotlinx.coroutines.*
 import ru.donspb.simplemap.data.repository.ILocalRepository
 
-class MapPresenter(val mapView: IMapView,
-                   val localRepository: ILocalRepository,
-                   val localCoroutineScope: CoroutineScope) {
+class MapPresenter(
+    private val mapView: IMapView,
+    private val localRepository: ILocalRepository,
+    private val localCoroutineScope: CoroutineScope) {
 
-    var newPoint: PointData? = null
+    private var newPoint: PointData? = null
 
-
-
-    fun showPoints() = localCoroutineScope.launch(Dispatchers.IO) {
-        val pointsList = withContext(Dispatchers.IO) { localRepository.getPoints() }
+    fun showPoints() = localCoroutineScope.launch {
+        val pointsList = localRepository.getPoints()
         if (!pointsList.isNullOrEmpty()) mapView.showPoints(pointsList)
     }
 
@@ -24,11 +23,12 @@ class MapPresenter(val mapView: IMapView,
     fun savePointToDB(name: String?) {
         if (!name.isNullOrEmpty() && (newPoint != null)) {
             newPoint!!.name = name
-            localCoroutineScope.launch(Dispatchers.IO) {
+            localCoroutineScope.launch {
                 localRepository.setPoint(newPoint!!)
+                mapView.showPoints(listOf(newPoint!!))
+                newPoint = null
             }
-        }
-        newPoint = null
+        } else newPoint = null
     }
 
 

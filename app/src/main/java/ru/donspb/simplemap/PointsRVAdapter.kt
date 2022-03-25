@@ -1,32 +1,52 @@
 package ru.donspb.simplemap
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PointsRVAdapter : RecyclerView.Adapter<PointsRVAdapter.PointsRVHolder>() {
+import ru.donspb.simplemap.databinding.PointsRvItemBinding
 
-    val dataSet: MutableList<PointData> = mutableListOf()
+class PointsRVAdapter(presenter: PointsPresenter)
+    : RecyclerView.Adapter<PointsRVAdapter.PointsRVHolder>() {
 
-    inner class PointsRVHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    var dataSet: List<PointData> = listOf()
+
+    init {
+        presenter.getPointsData()
+    }
+
+    inner class PointsRVHolder(val binding: PointsRvItemBinding)
+        : RecyclerView.ViewHolder(binding.root) {
 
         fun setPointsData(data: PointData) {
-
+            with(binding) {
+                tvName.text = data.name
+                tvLat.text = String.format("%.3f", data.lat)
+                tvLon.text = String.format("%.3f", data.lon)
+                if (data.description.isNullOrEmpty()) {
+                    tvDescr.text = R.string.description_default_text.toString()
+                } else {
+                    tvDescr.text = data.description
+                }
+            }
         }
 
     }
 
     fun setData(data: List<PointData>) {
-        dataSet.clear()
-
+        if (!data.isNullOrEmpty()) {
+            dataSet = data
+            notifyDataSetChanged()
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PointsRVHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.points_rv_item, parent, false)
-        return PointsRVHolder(view)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PointsRVHolder =
+        PointsRVHolder(PointsRvItemBinding.inflate(LayoutInflater.from(parent.context),
+        parent, false)).apply {
+            itemView.setOnClickListener {
+
+            }
+        }
 
     override fun onBindViewHolder(holder: PointsRVHolder, position: Int) {
         holder.setPointsData(dataSet[position])
