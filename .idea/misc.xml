@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/_ASProjects/SimpleMap/app/src/main/res/drawable/ic_baseline_place_24.xml" value="0.17435897435897435" />
+        <entry key="..\:/_ASProjects/SimpleMap/app/src/main/res/drawable/ic_launcher_background.xml" value="0.17435897435897435" />
+        <entry key="..\:/_ASProjects/SimpleMap/app/src/main/res/layout/activity_maps.xml" value="0.1" />
+        <entry key="..\:/_ASProjects/SimpleMap/app/src/main/res/layout/activity_points.xml" value="0.1707193515704154" />
+        <entry key="..\:/_ASProjects/SimpleMap/app/src/main/res/layout/dialog_layout.xml" value="0.12952898550724637" />
+        <entry key="..\:/_ASProjects/SimpleMap/app/src/main/res/layout/fragment_add_point_name.xml" value="0.1" />
+        <entry key="..\:/_ASProjects/SimpleMap/app/src/main/res/layout/fragment_dialog.xml" value="0.1" />
+        <entry key="..\:/_ASProjects/SimpleMap/app/src/main/res/layout/points_rv_item.xml" value="0.13451086956521738" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

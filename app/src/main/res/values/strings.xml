@@ -1,0 +1,13 @@
+<resources>
+    <!-- Main Activity -->
+    <string name="app_name">SimpleMap</string>
+    <string name="title_activity_maps">Карта</string>
+    <string name="dialog_addpoint_title">Название точки</string>
+    <string name="dialog_edittext_hint">Введите название...</string>
+    <string name="dialog_ok_button">OK</string>
+    <string name="dialog_cancel_button">Отмена</string>
+
+    <!-- Points Activity -->
+    <string name="title_activity_points">Список точек</string>
+    <string name="points_rv_delimiter"> - </string>
+</resources>
