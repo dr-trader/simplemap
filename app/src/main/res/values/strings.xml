@@ -14,4 +14,5 @@
     <string name="latlon_delimiter">", "</string>
     <string name="title_name">Название:</string>
     <string name="title_descr">Описание:</string>
+    <string name="button_delete">Удалить</string>
 </resources>

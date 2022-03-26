@@ -30,7 +30,9 @@ class PointsRVAdapter(private val presenter: PointsPresenter)
                 } else {
                     tvDescr.text = data.description
                 }
-
+                btnDelete.setOnClickListener {
+                    presenter.deletePoint(data, adapterPosition)
+                }
             }
         }
 

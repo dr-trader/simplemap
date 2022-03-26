@@ -26,4 +26,9 @@ class PointsPresenter(
         localRepository.savePoint(data)
         editedPosition?.let { pointView.updateRV(it, data) }
     }
+
+    fun deletePoint(data: PointData, position: Int) = localCoroutineScope.launch {
+        localRepository.deletePoint(data)
+        pointView.updateDeletedRV(position)
+    }
 }

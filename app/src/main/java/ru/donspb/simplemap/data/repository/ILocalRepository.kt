@@ -6,4 +6,5 @@ interface ILocalRepository {
     suspend fun getPoints(): List<PointData>
     suspend fun setPoint(point: PointData)
     suspend fun savePoint(point: PointData)
+    suspend fun deletePoint(point: PointData)
 }

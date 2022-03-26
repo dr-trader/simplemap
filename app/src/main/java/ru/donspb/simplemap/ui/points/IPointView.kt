@@ -6,4 +6,5 @@ interface IPointView {
     fun fillAdapter(data: List<PointData>)
     fun showEditDialog(data: PointData)
     fun updateRV(position: Int, data: PointData)
+    fun updateDeletedRV(position: Int)
 }

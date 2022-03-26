@@ -14,7 +14,14 @@ class LocalRepository(private val dao: PointsDao) : ILocalRepository {
     }
 
     override suspend fun savePoint(point: PointData) {
-        val id = dao.getEntityId(point.lat, point.lon)
+        val id = searchPoint(point)
         dao.update(Entity(id, point.name, point.description, point.lat, point.lon))
     }
+
+    override suspend fun deletePoint(point: PointData) {
+        val id = searchPoint(point)
+        dao.delete(Entity(id, point.name, point.description, point.lat, point.lon))
+    }
+
+    suspend private fun searchPoint(point: PointData) : Int? = dao.getEntityId(point.lat, point.lon)
 }
