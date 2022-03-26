@@ -72,7 +72,7 @@ class PointsActivity : AppCompatActivity(), IPointView {
     }
 
     override fun updateDeletedRV(position: Int) {
-        adapter.notifyItemRemoved(position)
+        adapter.dataRemoved(position)
     }
 
 }

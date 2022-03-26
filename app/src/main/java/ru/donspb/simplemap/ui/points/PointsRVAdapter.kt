@@ -11,7 +11,7 @@ import ru.donspb.simplemap.databinding.PointsRvItemBinding
 class PointsRVAdapter(private val presenter: PointsPresenter)
     : RecyclerView.Adapter<PointsRVAdapter.PointsRVHolder>() {
 
-    private var dataSet: List<PointData> = listOf()
+    private var dataSet: MutableList<PointData> = mutableListOf()
 
     init {
         presenter.getPointsData()
@@ -40,7 +40,7 @@ class PointsRVAdapter(private val presenter: PointsPresenter)
 
     fun setData(data: List<PointData>) {
         if (!data.isNullOrEmpty()) {
-            dataSet = data
+            dataSet.addAll(data)
             notifyDataSetChanged()
         }
     }
@@ -49,6 +49,11 @@ class PointsRVAdapter(private val presenter: PointsPresenter)
         dataSet[position].name = data.name
         dataSet[position].description = data.description
         notifyItemChanged(position)
+    }
+
+    fun dataRemoved(position: Int) {
+        dataSet.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PointsRVHolder =
